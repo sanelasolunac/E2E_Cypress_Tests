@@ -5,10 +5,12 @@ describe('Login/Logout Tests', () => {
 		cy.get('#signin_button').click()
 	})
 	it('should try to login with invalid data', () => {
-		cy.get('#login_form').should('be.visible')
-		cy.get('#user_login').type('invalid_name')
-		cy.get('#user_password').type('invalid_password')
-		cy.contains('Sign in').click()
+		// cy.get('#login_form').should('be.visible')
+		// cy.get('#user_login').type('invalid_name')
+		// cy.get('#user_password').type('invalid_password')
+		// cy.contains('Sign in').click()
+
+		cy.login('invalid_name', 'invalid_password')
 	})
 
 	it('should display error message', () => {
@@ -22,10 +24,11 @@ describe('Login/Logout Tests', () => {
 			const username = user.id
 			const password = user.pwd
 
-			cy.get('#user_login').type(username)
-			cy.get('#user_password').type(password)
-			cy.get('#user_remember_me').click()
-			cy.contains('Sign in').click()
+			// cy.get('#user_login').type(username)
+			// cy.get('#user_password').type(password)
+			// cy.get('#user_remember_me').click()
+			// cy.contains('Sign in').click()
+			cy.login(username, password)
 		})
 		cy.get('ul.nav-tabs').should('be.visible')
 	})
